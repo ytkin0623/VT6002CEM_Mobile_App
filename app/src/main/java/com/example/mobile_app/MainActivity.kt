@@ -1,5 +1,6 @@
 package com.example.mobile_app
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -60,6 +61,8 @@ class MainActivity : AppCompatActivity() {
             findViewById<Button>(R.id.biometric_login)
         biometricLoginButton.setOnClickListener {
             biometricPrompt.authenticate(promptInfo)
+            val i= Intent(this, HomePage::class.java)
+            startActivity(i)
         }
 
     }
