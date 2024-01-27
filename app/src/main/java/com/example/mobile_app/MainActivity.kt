@@ -3,6 +3,7 @@ package com.example.mobile_app
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext,
                         "Authentication succeeded!", Toast.LENGTH_SHORT)
                         .show()
+                    goHomePage()
                 }
 
                 override fun onAuthenticationFailed() {
@@ -61,8 +63,6 @@ class MainActivity : AppCompatActivity() {
             findViewById<Button>(R.id.biometric_login)
         biometricLoginButton.setOnClickListener {
             biometricPrompt.authenticate(promptInfo)
-            val i= Intent(this, HomePage::class.java)
-            startActivity(i)
         }
 
     }
@@ -83,6 +83,11 @@ class MainActivity : AppCompatActivity() {
                 // Prompts the user to create credentials that your app accepts.
                 biometricStatusTextView.text = "Biometric features are not enrolled."
         }
+    }
+
+    fun goHomePage() {
+        val intent = Intent(this, HomePage::class.java)
+        startActivity(intent)
     }
 
 }
