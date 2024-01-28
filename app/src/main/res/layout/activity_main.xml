@@ -1,44 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#225d77"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="300dp"
-        android:layout_height="150dp"
-        android:textSize="60sp"
-        android:textAlignment="center"
-        android:text="Welcome"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.294" />
+    <RelativeLayout
+        android:id="@+id/main_Container"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/address"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/biometric_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Please Login with Fingerprint"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:textSize="60sp"
+                android:textAlignment="center"
+                android:text="Welcome"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.294" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/hintContainer"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_centerInParent="true">
 
-    <Button
-        android:id="@+id/biometric_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50pt"
-        android:text="Login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/biometric_status" />
+            <TextView
+                android:id="@+id/biometric_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login with Fingerprint"
+                android:textSize="30sp"
+                android:layout_gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/biometric_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50pt"
+                android:layout_gravity="center"
+                android:text="Login"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/biometric_status" />
+        </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+</RelativeLayout>
