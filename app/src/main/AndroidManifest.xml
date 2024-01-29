@@ -29,6 +29,12 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.Mobile_App">
         </activity>
+        <activity
+            android:name=".SaveWeatherDataPage"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Mobile_App">
+        </activity>
     </application>
 
 </manifest>

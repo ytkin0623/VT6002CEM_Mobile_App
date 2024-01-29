@@ -1,6 +1,7 @@
 package com.example.mobile_app
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import android.widget.Button
@@ -26,12 +27,17 @@ class WeatherPage : AppCompatActivity() {
         setContentView(R.layout.weatherpage);
 
         checkWeather().execute()
+
+        val buttonClick = findViewById<Button>(R.id.btn_saveData)
+        buttonClick.setOnClickListener {
+            goSaveDataPage()
+        }
     }
 
     inner class checkWeather() : AsyncTask<String, Void, String>() {
         override fun onPreExecute() {
             super.onPreExecute()
-            findViewById<ProgressBar>(R.id.load).visibility = View.VISIBLE
+            //findViewById<ProgressBar>(R.id.load).visibility = View.VISIBLE
             findViewById<RelativeLayout>(R.id.home_Container).visibility = View.GONE
             findViewById<TextView>(R.id.error).visibility = View.GONE
         }
@@ -39,12 +45,11 @@ class WeatherPage : AppCompatActivity() {
         override fun doInBackground(vararg params: String?): String? {
             var response:String?
             try{
-                response = URL("https://api.openweathermap.org/data/2.5/weather?q=$CITY&appid=$API").readText(
+                response = URL("https://api.openweathermap.org/data/2.5/weather?q=$CITY&units=metric&appid=$API").readText(
                     Charsets.UTF_8
                 )
             }catch (e: Exception){
                 response = null
-                println("hi")
                 Log.e(TAG, "Exception: "+Log.getStackTraceString(e));
             }
             return response
@@ -75,15 +80,19 @@ class WeatherPage : AppCompatActivity() {
                 findViewById<TextView>(R.id.minTemp).text = tempMin
                 findViewById<TextView>(R.id.maxTemp).text = tempMax
 
-                findViewById<ProgressBar>(R.id.load).visibility = View.GONE
+                //findViewById<ProgressBar>(R.id.load).visibility = View.GONE
                 findViewById<RelativeLayout>(R.id.home_Container).visibility = View.VISIBLE
             }
             catch (e: Exception) {
-                findViewById<ProgressBar>(R.id.load).visibility = View.GONE
+                //findViewById<ProgressBar>(R.id.load).visibility = View.GONE
                 findViewById<TextView>(R.id.error).visibility = View.VISIBLE
                 Log.e(TAG, "Exception: "+Log.getStackTraceString(e));
-                println("hi")
             }
         }
+    }
+
+    fun goSaveDataPage() {
+        val intent = Intent(this, SaveWeatherDataPage::class.java)
+        startActivity(intent)
     }
 }
